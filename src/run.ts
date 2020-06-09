@@ -63,6 +63,8 @@ export async function run() {
 
     let forceDeployment: boolean = core.getInput('force') === 'true';
 
+    console.log("force value : " + core.getInput('force') + ", used : " + forceDeployment);
+
     if (action === 'deploy') {
         let strategy = core.getInput('strategy');
         console.log("strategy: ", strategy)
