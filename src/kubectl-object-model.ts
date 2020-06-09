@@ -20,13 +20,11 @@ export class Kubectl {
         } else {
             this.namespace = 'default';
         }
-        console.log("value of forceDeploy in constructor : " + forceDeployment);
     }
 
     public apply(configurationPaths: string | string[]) {
-        console.log("value of forceDeploy in apply : " + this.forceDeployment);
         if (this.forceDeployment) {
-            console.log("force flag is on, graceful deletion will be bypassed");
+            console.log("force flag is on, deployment will continue even if previous deployment already exists");
             return this.execute(['apply', '--force', '-f', this.createInlineArray(configurationPaths)]);
         }
         else {

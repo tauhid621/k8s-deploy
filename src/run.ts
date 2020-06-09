@@ -63,12 +63,10 @@ export async function run() {
 
     let forceDeployment: boolean = core.getInput('force') === 'true';
 
-    console.log("force value : " + core.getInput('force') + ", used : " + forceDeployment);
-
     if (action === 'deploy') {
         let strategy = core.getInput('strategy');
         console.log("strategy: ", strategy)
-        await deploy(new Kubectl(kubectlPath, namespace, forceDeployment), manifests, strategy);
+        await deploy(new Kubectl(kubectlPath, namespace, undefined, forceDeployment), manifests, strategy);
     }
     else if (action === 'promote') {
         await promote(true);
